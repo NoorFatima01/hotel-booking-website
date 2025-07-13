@@ -1,0 +1,33 @@
+# Dependency directories
+node_modules/
+dist/       # If you have compiled files
+
+# Environment files
+.env
+.env.*
+!.env.production  # Optional: Keep if you need it in production
+
+# Build and IDE files
+.vscode/
+.idea/
+*.log
+*.tmp
+
+# Git and version control
+.git/
+.gitignore
+
+# Docker files (avoid recursive copies)
+Dockerfile
+.dockerignore
+
+# TypeScript and test files (optional)
+*.tsbuildinfo
+coverage/
+__tests__/
+
+# macOS files (if developing on Mac)
+.DS_Store
+
+# Fly.io specific
+fly.toml

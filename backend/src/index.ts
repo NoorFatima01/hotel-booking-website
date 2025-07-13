@@ -1,12 +1,10 @@
 import express from "express";
 import cors from "cors";
-import { Request, Response } from "express";
 import "dotenv/config";
 import mongoose from "mongoose";
 import userRoutes from "./routes/users";
 import authRoutes from "./routes/auth";
 import cookieParser from "cookie-parser";
-import path from "path";
 import { S3Client } from "@aws-sdk/client-s3";
 import myHotelRoutes from "./routes/my-hotels";
 import hotelRoutes from "./routes/hotels";
@@ -31,20 +29,24 @@ app.use(
   })
 );
 
-
 app.use(express.json()); //converts the body of the request to json automatically
 app.use(express.urlencoded({ extended: true })); //helps parse the url to get the query parameters
-
+// Routes
+app.get("/", (req, res) => {
+  //  Critical for Fly.io health checks
+  res.json({ status: "API is running" });
+});
 app.use("/api/users", userRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/my-hotels", myHotelRoutes);
-app.use("/api/hotels",hotelRoutes)
+app.use("/api/hotels", hotelRoutes);
 
+const PORT = Number(process.env.PORT) || 3000;
 
-app.listen(7000, () => {
-  console.log("Server started at port 7000");
+app.listen(PORT, "0.0.0.0", () => {
+  // Must use 0.0.0.0
+  console.log(`Server running on port ${PORT}`);
 });
-
 
 export default app;
 
