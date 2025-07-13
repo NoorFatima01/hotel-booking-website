@@ -5,7 +5,6 @@
       "src": "src/index.ts",
       "use": "@vercel/node",
       "config": { 
-        "runtime": "nodejs18.x",
         "includeFiles": [
           "src/**/*",          
           "package.json",      

@@ -45,7 +45,9 @@ app.listen(7000, () => {
   console.log("Server started at port 7000");
 });
 
-//
+
+export default app;
+
 //In the provided code snippet, the app.use(cors(...)) middleware is being used to configure Cross-Origin Resource Sharing (CORS) for a Node.js application. CORS is a security feature implemented by web browsers to restrict webpages from making requests to a different domain than the one that served the original webpage. This restriction is known as the same-origin policy.
 
 //When you're building a web application, there are scenarios where you might want to make requests from a frontend (typically running on a different domain or port) to a backend server. CORS headers help in relaxing the same-origin policy, allowing these cross-origin requests under controlled conditions.
