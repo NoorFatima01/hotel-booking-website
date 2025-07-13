@@ -4,12 +4,13 @@
     {
       "src": "src/index.ts",
       "use": "@vercel/node",
-      "config": { 
+      "config": {
         "includeFiles": [
-          "src/**/*",          
-          "package.json",      
-          "tsconfig.json",     
-          ".env*"              
+          "src/**/*",
+          "routes/**/*",
+          "package.json",
+          "tsconfig.json",
+          ".env*"
         ]
       }
     }
@@ -17,7 +18,7 @@
   "routes": [
     {
       "src": "/api/(.*)",
-      "dest": "src/index.ts" 
+      "dest": "src/index.ts"
     }
   ]
 }
