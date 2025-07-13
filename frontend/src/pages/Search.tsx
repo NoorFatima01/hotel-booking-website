@@ -12,7 +12,7 @@ const Search = () => {
   const search = useSearchContext(); //since the context is shared by the entire app we can easily access the values of the search from anywhere
 
   const [page, setPage] = useState(1); //by default the user will always be on the first page
-  const [selectedStars,setSelectedStars] = useState<string[]>([])
+  const [selectedStars, setSelectedStars] = useState<string[]>([]);
 
   const searchParams = {
     destination: search.destination,
@@ -21,21 +21,22 @@ const Search = () => {
     adultCapacity: search.adults.toString(),
     childrenCapacity: search.child.toString(),
     page: page.toString(),
-    stars: selectedStars
+    stars: selectedStars,
   };
 
-  const { data: hotelData } = useQuery(["searchHotels", searchParams], () =>
-    apiCLient.searchHotels(searchParams)
+  const { data: hotelData, isLoading } = useQuery(
+    ["searchHotels", searchParams],
+    () => apiCLient.searchHotels(searchParams)
   );
 
-  const handleStarChange = (event:React.ChangeEvent<HTMLInputElement>) => {
-    const star = event.target.value
-    if(selectedStars.includes(star)){
-      setSelectedStars(selectedStars.filter(s => s !== star))
-    }else{
-      setSelectedStars([...selectedStars,star])
+  const handleStarChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const star = event.target.value;
+    if (selectedStars.includes(star)) {
+      setSelectedStars(selectedStars.filter((s) => s !== star));
+    } else {
+      setSelectedStars([...selectedStars, star]);
     }
-  }
+  };
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-[250px_1fr] gap-5">
@@ -44,7 +45,10 @@ const Search = () => {
           <h3 className="text-lg font-semibold border-b border-slate-300 pb-5">
             Filter by:
           </h3>
-          <StarRatingFilter selectedStars={selectedStars} onChange={handleStarChange}/>
+          <StarRatingFilter
+            selectedStars={selectedStars}
+            onChange={handleStarChange}
+          />
         </div>
       </div>
 
@@ -55,11 +59,21 @@ const Search = () => {
             {search.destination && ` in ${search.destination}`}
           </span>
         </div>
-        {hotelData?.data.map((hotel) => (
-          <div key={hotel._id}>
-            <SearchResultCard hotel={hotel} />
+        {isLoading ? (
+          <div>Loading...</div>
+        ) : hotelData ? (
+          hotelData.data.map((hotel) => (
+            <div key={hotel._id}>
+              <SearchResultCard hotel={hotel} />
+            </div>
+          ))
+        ) : (
+          <div>
+            No hotels found. Maybe the deployed backend server is taking time to
+            start after a long period of inactivity. Try again after a few
+            seconds.
           </div>
-        ))}
+        )}
         <Pagination
           page={hotelData?.pagination.page || 1}
           pages={hotelData?.pagination.pages || 1}
