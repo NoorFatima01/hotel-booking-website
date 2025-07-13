@@ -56,7 +56,9 @@ const Search = () => {
           </span>
         </div>
         {hotelData?.data.map((hotel) => (
-          <SearchResultCard hotel={hotel} />
+          <div key={hotel._id}>
+            <SearchResultCard hotel={hotel} />
+          </div>
         ))}
         <Pagination
           page={hotelData?.pagination.page || 1}

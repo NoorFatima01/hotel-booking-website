@@ -31,7 +31,6 @@ app.use(
   })
 );
 
-app.use(express.static(path.join(__dirname,"../../frontend/dist"))); //serve the static files from the dist folder of the frontend
 
 app.use(express.json()); //converts the body of the request to json automatically
 app.use(express.urlencoded({ extended: true })); //helps parse the url to get the query parameters
@@ -41,9 +40,6 @@ app.use("/api/auth", authRoutes);
 app.use("/api/my-hotels", myHotelRoutes);
 app.use("/api/hotels",hotelRoutes)
 
-app.get("*", (req:Request, res:Response) => {
-  res.sendFile(path.join(__dirname,"../../frontend/dist/index.html"));
-}); 
 
 app.listen(7000, () => {
   console.log("Server started at port 7000");

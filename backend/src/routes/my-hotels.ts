@@ -73,17 +73,17 @@ router.post(
       .isNumeric()
       .withMessage("Star rating must be a number"),
     body("facilities")
-      .custom((value) => {
-        // If it's a single value, convert it to an array
-        const facilitiesArray = Array.isArray(value) ? value : [value];
-        return facilitiesArray.length > 0;
-      })
+      .customSanitizer((value) => (Array.isArray(value) ? value : [value]))
+      .isArray({ min: 1 })
       .withMessage("At least one facility is required"),
   ],
   async (req: Request, res: Response) => {
+     console.log("Creating hotel with data:", req.body);
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      return res.status(400).json({ message: "Bad Request", errors: errors.array() });
+      return res
+        .status(400)
+        .json({ message: "Bad Request", errors: errors.array() });
     }
 
     try {
@@ -96,9 +96,9 @@ router.post(
         lastUpdated: new Date(),
         userId: req.userId,
         // Ensure facilities is always an array
-        facilities: Array.isArray(req.body.facilities) 
-          ? req.body.facilities 
-          : [req.body.facilities]
+        facilities: Array.isArray(req.body.facilities)
+          ? req.body.facilities
+          : [req.body.facilities],
       };
 
       const hotel = new Hotel(newHotel);

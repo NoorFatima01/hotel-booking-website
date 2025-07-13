@@ -3,7 +3,9 @@ import { SignInFormData } from "../pages/SignIn";
 import { HotelType } from "../../../backend/src/models/hotel";
 import { HotelSearchResponse } from "../../../backend/src/models/search";
 import { UserType } from "../../../backend/src/models/user";
-const BASE_URL = process.env.REACT_APP_BACKEND_URL as string || "";
+
+const BASE_URL = import.meta.env.VITE_BACKEND_URL;
+console.log("BASE_URL:", BASE_URL);
 
 export const register = async (formData: RegisterFormData) => {
   const response = await fetch(`${BASE_URL}/api/users/register`, {
@@ -73,6 +75,7 @@ export const fetchCurrentUser = async ():Promise<UserType> => {
 };
 
 export const addMyHotel = async (formData: FormData) => {
+  console.log("Adding hotel with formData:", formData);
   const response = await fetch(`${BASE_URL}/api/my-hotels`, {
     method: "POST",
     credentials: "include", //to send the cookie
