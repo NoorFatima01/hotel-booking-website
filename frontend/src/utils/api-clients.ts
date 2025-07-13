@@ -5,7 +5,6 @@ import { HotelSearchResponse } from "../../../backend/src/models/search";
 import { UserType } from "../../../backend/src/models/user";
 
 const BASE_URL = import.meta.env.VITE_BACKEND_URL;
-console.log("BASE_URL:", BASE_URL);
 
 export const register = async (formData: RegisterFormData) => {
   const response = await fetch(`${BASE_URL}/api/users/register`, {
