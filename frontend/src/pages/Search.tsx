@@ -60,7 +60,11 @@ const Search = () => {
           </span>
         </div>
         {isLoading ? (
-          <div>Loading...</div>
+          <div>
+            Loading... Taking a long time? Maybe the deployed backend server is
+            taking time to start after a long period of inactivity. Try again
+            after a few seconds.
+          </div>
         ) : hotelData ? (
           hotelData.data.map((hotel) => (
             <div key={hotel._id}>
