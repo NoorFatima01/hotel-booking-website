@@ -35,36 +35,7 @@ A full-stack hotel booking web application built with the MERN stack (MongoDB, E
 ### Testing
 - **Playwright** - End-to-end testing
 
-## Project Structure
-
-```
-hotel-booking-website/
-├── backend/          # Express.js backend server
-│   ├── src/
-│   │   ├── models/   # Database models
-│   │   ├── routes/   # API routes
-│   │   ├── middleware/ # Custom middleware
-│   │   └── index.ts  # Server entry point
-│   └── package.json
-├── frontend/         # React frontend application
-│   ├── src/
-│   │   ├── components/ # Reusable components
-│   │   ├── pages/    # Page components
-│   │   ├── context/  # React context providers
-│   │   ├── layouts/  # Layout components
-│   │   └── App.tsx   # Main app component
-│   └── package.json
-└── e2etests/        # End-to-end tests
-    └── package.json
-```
-
 ## Getting Started
-
-### Prerequisites
-
-- Node.js (v16 or higher)
-- MongoDB (local installation or MongoDB Atlas account)
-- npm or yarn package manager
 
 ### Environment Variables
 
@@ -143,15 +114,3 @@ The backend provides the following main API routes:
 - `/api/users` - User management
 - `/api/my-hotels` - Hotel management for owners
 - `/api/hotels` - Public hotel browsing and booking
-
-## Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-## License
-
-This project is licensed under the ISC License.
-
-## Author
-
-NoorFatima01
