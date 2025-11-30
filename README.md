@@ -19,7 +19,8 @@ A full-stack hotel booking web application built with the MERN stack (MongoDB, E
 - **Vite** - Fast build tool and development server
 - **Tailwind CSS** - Utility-first CSS framework
 - **React Router** - Client-side routing
-- **React Query** - Data fetching and state management
+- **Tanstack Query** - Data fetching and state management
+- **Context API** - For client side state management
 - **React Hook Form** - Form validation and handling
 
 ### Backend
@@ -29,7 +30,7 @@ A full-stack hotel booking web application built with the MERN stack (MongoDB, E
 - **MongoDB** - NoSQL database
 - **Mongoose** - MongoDB object modeling
 - **JWT** - JSON Web Tokens for authentication
-- **Multer** - File upload handling
+- **AWS S3 Bucket** - Image upload handling
 - **Stripe** - Payment processing
 
 ### Testing
@@ -42,10 +43,16 @@ A full-stack hotel booking web application built with the MERN stack (MongoDB, E
 Create `.env` files in the backend directory with the following variables:
 
 ```env
-MONGODB_CONNECTION_STRING=your_mongodb_connection_string
-JWT_SECRET_KEY=your_jwt_secret_key
-FRONTEND_URL=http://localhost:5173
-STRIPE_API_KEY=your_stripe_api_key
+JWT_SECRET=****
+MONGODB_URI=****
+S3_ACCESS_KEY=****
+S3_BUCKET_NAME=****
+S3_REGION=****
+S3_SECRET_KEY=****
+STRIPE_API_KEY=****
+FRONTEND_URL=****
+PORT=****
+NODE_ENV=****
 ```
 
 ### Installation
