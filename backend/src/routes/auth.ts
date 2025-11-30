@@ -39,6 +39,7 @@ router.post(
 
       res.cookie("authCookie", token, {
         httpOnly: true,
+        sameSite: "none",
         //When httpOnly is set to true, it means that the cookie is accessible only through the HTTP(S) protocol and cannot be accessed by client-side scripts (e.g., JavaScript running in the browser). This is a security measure to mitigate the risk of cross-site scripting (XSS) attacks.
         secure: process.env.NODE_ENV === "production", //false for dev 
         //When secure is set to true, it means that the cookie should only be sent over secure, encrypted connections (i.e., HTTPS). If the request is made over an unsecured HTTP connection, the browser won't include the cookie in the request.

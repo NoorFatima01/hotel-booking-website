@@ -41,6 +41,7 @@ router.post("/register", [
 
     res.cookie("authCookie",token,{
         httpOnly:true,
+        sameSite:"none",
         secure:process.env.NODE_ENV === "production", //false for dev
         maxAge:1000*60*60*24, //1 day (is same as the duration of expiry of the token)
     })
